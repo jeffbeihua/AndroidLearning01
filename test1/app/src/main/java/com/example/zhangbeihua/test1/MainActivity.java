@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pbTimeWaiting.setVisibility(View.VISIBLE);
 
-                /*Thread thread = new Thread(new Runnable() {
+                Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-                thread.start();*/
+                thread.start();
             }
         });
 
