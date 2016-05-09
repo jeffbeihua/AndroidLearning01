@@ -9,7 +9,7 @@ import android.widget.Button;
  * Created by zhangbeihua on 8/05/16.
  */
 public class IndexActivity extends Activity {
-    private Button btnMainActivity, btnSecondActivity;
+    private Button btnMainActivity, btnSecondActivity, btnActivityLifeCycle;
     private ButtonListener listener;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -26,11 +26,13 @@ public class IndexActivity extends Activity {
     private void SetClickListener() {
         btnMainActivity.setOnClickListener(listener);
         btnSecondActivity.setOnClickListener(listener);
+        btnActivityLifeCycle.setOnClickListener(listener);
     }
 
     private void FindView() {
         btnMainActivity = (Button) findViewById(R.id.btnMainActivity);
         btnSecondActivity = (Button) findViewById(R.id.btnSecondActivity);
+        btnActivityLifeCycle = (Button) findViewById(R.id.btnActivityLifeCycle);
     }
 
     private class ButtonListener implements View.OnClickListener{
@@ -43,6 +45,10 @@ public class IndexActivity extends Activity {
                 case R.id.btnSecondActivity:
                     Intent i2 = new Intent(IndexActivity.this,SecondActivity.class);
                     startActivity(i2);
+                    break;
+                case R.id.btnActivityLifeCycle:
+                    Intent i3= new Intent(IndexActivity.this, ActivityLifeCycle.class);
+                    startActivity(i3);
                     break;
 
 

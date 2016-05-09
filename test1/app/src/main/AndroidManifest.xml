@@ -22,6 +22,9 @@
         </activity>
         <activity android:name=".SecondActivity">
         </activity>
+
+        <activity android:name=".ActivityLifeCycle">
+        </activity>
     </application>
 
 </manifest>
