@@ -12,27 +12,17 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <!--Button
+        <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnMainActivity"
-            android:text="切换到MainActivity"
-            android:layout_margin="10px"
-            android:background="#FFBB00"/>
+            android:id="@+id/etMessageBox"/>
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnSecondActivity"
-            android:text="切换到SecondActivity"
+            android:id="@+id/btnSendMessage"
+            android:text="发送"
             android:layout_margin="10px"
             android:background="#FFBB00"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnActivityLifeCycle"
-            android:text="切换到ActivityLifeCycle"
-            android:layout_margin="10px"
-            android:background="#FFBB00"/-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
