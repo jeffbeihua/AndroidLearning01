@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="28sp"
+                android:padding="32dp"
+                android:textColor="#db4437"
+                android:text="太酷病历"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:hint="用户名"
+            android:maxLength="15"
+            android:id="@+id/loginid_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:maxLength="30"
+            android:hint="密码"
+            android:id="@+id/loginpswd_et"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:hint="验证码"
+                android:maxLength="15"
+                android:id="@+id/safecode_et"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:layout_gravity="bottom" />
+            <ImageView
+                android:id="@+id/codeimg"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.5"
+                android:visibility="gone"/>
+            <Button
+                android:text="获取验证码"
+                android:textColor="#ffffff"
+                android:background="#db4437"
+                android:id="@+id/safecode_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:layout_marginTop="16dp"
+            android:background="#db4437"
+            android:id="@+id/login_ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/login_help_tv"
+            android:clickable="true"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:textSize="14sp"
+            android:textColor="#db4437"
+            android:text="密码找回"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#eeeeee"/>
+
+        <TextView
+            android:gravity="center"
+            style="@style/help_q_tv"
+            android:text="免费体验" />
+
+
+    </LinearLayout>
+</RelativeLayout>
