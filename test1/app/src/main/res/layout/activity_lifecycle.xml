@@ -23,6 +23,11 @@
             android:text="发送"
             android:layout_margin="10px"
             android:background="#FFBB00"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="点我返回得到加工后数据"
+            android:id="@+id/btnReturnActivity"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -17,7 +17,7 @@ public class ActivityLifeCycle extends Activity{
     private EditText etMessageBox;
     private Button btnSendMessage;
     private int count;
-
+    private static final int RC_DATA_ACTIVITY = 100;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lifecycle);
@@ -42,13 +42,17 @@ public class ActivityLifeCycle extends Activity{
 //                startActivity(intent);
                 //ActivityA ->ActivityB->ActivityC
                 //ActivityA ->ActivityB , ActivityC
-                intent.setClass(ActivityLifeCycle.this, DataActivity.class);
+                /*intent.setClass(ActivityLifeCycle.this, DataActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("year",2014);
                 bundle.putDouble("score", 100.0);
                 bundle.putString("msg", strMsg);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);*/
+
+                intent.setClass(ActivityLifeCycle.this, DataActivity.class);
+                intent.putExtra("joke", strMsg);
+                startActivityForResult(intent, RC_DATA_ACTIVITY);
             }
         });
 
@@ -98,5 +102,23 @@ public class ActivityLifeCycle extends Activity{
         super.onSaveInstanceState(outState);
 
         outState.putInt("count",count);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //处理逻辑
+        switch (requestCode){
+            case RC_DATA_ACTIVITY:
+                if(resultCode == RESULT_OK){
+                    String strResult = data.getStringExtra("ma");
+                    Toast.makeText(ActivityLifeCycle.this,strResult,Toast.LENGTH_SHORT).show();
+                }else if(resultCode == RESULT_CANCELED){
+                    Toast.makeText(ActivityLifeCycle.this,"无法获取",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+        }
     }
 }
