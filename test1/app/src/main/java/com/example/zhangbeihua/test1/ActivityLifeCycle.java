@@ -37,8 +37,17 @@ public class ActivityLifeCycle extends Activity{
             public void onClick(View v) {
                 String strMsg = etMessageBox.getText().toString();
                 Intent intent = new Intent();
-                intent.putExtra("msg", strMsg);
-                intent.setClass(ActivityLifeCycle.this,DataActivity.class);
+//                intent.putExtra("msg", strMsg);
+//                intent.setClass(ActivityLifeCycle.this, DataActivity.class);
+//                startActivity(intent);
+                //ActivityA ->ActivityB->ActivityC
+                //ActivityA ->ActivityB , ActivityC
+                intent.setClass(ActivityLifeCycle.this, DataActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("year",2014);
+                bundle.putDouble("score", 100.0);
+                bundle.putString("msg", strMsg);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

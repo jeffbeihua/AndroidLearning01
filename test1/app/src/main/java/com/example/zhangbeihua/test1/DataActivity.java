@@ -16,8 +16,14 @@ public class DataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
         Intent intent=this.getIntent();
+        Bundle bundle= intent.getExtras();
+
         String strGetMsg = intent.getStringExtra("msg");
-        Toast.makeText(this, strGetMsg, Toast.LENGTH_LONG).show();
+        int Year = bundle.getInt("year");
+        double score = bundle.getDouble("score");
+
+
+        Toast.makeText(this, strGetMsg+"/"+Year+"/"+score, Toast.LENGTH_LONG).show();
     }
 
 }
