@@ -1,4 +1,4 @@
-package com.example.zhangbeihua.patientcase;
+package com.example.zhangbeihua.patientcase.Activity;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.zhangbeihua.patientcase.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SecondFragment extends Fragment {
+public class ThirdFragment extends Fragment {
 
 
-    public SecondFragment() {
+    public ThirdFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +25,7 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false);
+        return inflater.inflate(R.layout.fragment_third, container, false);
     }
 
 }

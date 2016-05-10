@@ -2,15 +2,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.zhangbeihua.patientcase.HomeFragment">
+    tools:context=".Activity.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home Fragment"
+        android:text="Home1 Fragment"
         android:gravity="center"
         android:textSize="30dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"/-->
+
+    <Button
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="新建病历"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:id="@+id/btnCreatePatientCase"
+        android:layout_gravity="left|top" />
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/searchView"
+        android:layout_gravity="right|top" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_marginTop="70dp"
+        android:id="@+id/listView"
+        android:layout_gravity="center" />
+
+
+    <!--LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#ffffff"
+        android:weightSum="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:text="新建病历"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:id="@+id/btnCreatePatientCase"
+                android:layout_gravity="left|top" />
+            <SearchView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchView2"
+                android:layout_gravity="right|top" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="120"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="病历排序："
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:id="@+id/textView"
+                android:layout_gravity="left|top" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:id="@+id/spinner"/>
+        </LinearLayout-->
+
+
+        <!--LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+            <ImageView android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5px"/>
+
+            <LinearLayout android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="22px" />
+                <TextView android:id="@+id/info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="13px" />
+
+            </LinearLayout>
+
+
+        </LinearLayout-->
+
+    <!--linearlayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_height="match_parent">
+        <listview android:id="@+id/ListViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </linearlayout-->
+
+
+
+    <!--/LinearLayout-->
+
 
 </FrameLayout>

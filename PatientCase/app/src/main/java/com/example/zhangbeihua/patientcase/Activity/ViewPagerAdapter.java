@@ -1,4 +1,4 @@
-package com.example.zhangbeihua.patientcase;
+package com.example.zhangbeihua.patientcase.Activity;
 
 //import android.app.FragmentManager;
 import android.support.v4.app.Fragment;
