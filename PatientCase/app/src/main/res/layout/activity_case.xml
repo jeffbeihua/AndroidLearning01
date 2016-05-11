@@ -21,16 +21,7 @@
 
 
 
-    <!--TextView
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="标签:"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textColorHighlight="@color/colorAccent"
-        android:id="@+id/textView"
-        android:layout_weight="0.05" /-->
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -98,10 +89,6 @@
             android:id="@+id/et2"
             android:layout_toEndOf="@+id/tv2" />
     </RelativeLayout>
-
-
-
-
 
 
 
