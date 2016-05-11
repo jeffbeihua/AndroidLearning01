@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -21,15 +24,17 @@ import java.io.BufferedReader;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import java.io.OutputStream;
 /**
  * Created by zhangbeihua on 12/05/16.
  */
 public class HTTPEnquire {
     public String url = "http://10.0.2.2:9000/";
-    public static String Get(String s ,String[] a) throws ExecutionException, InterruptedException {
+    public static String Get(String s ,String a) throws ExecutionException, InterruptedException {
 
     String parameters = "";
-    if (a.length !=0){
+    /*if (a.length !=0){
         parameters = "?";
     }
     for (int i = 0; i < a.length; i++) {
@@ -39,27 +44,26 @@ public class HTTPEnquire {
             e.printStackTrace();
         }
         i++;
-    }
+    }*/
 
 
         return new DownloadWebpageTask().execute("http://10.0.2.2:9000/"+s+parameters,"GET","").get();
     }
 
-    public static String Post(String s ,String[] a) throws ExecutionException, InterruptedException {
+    public static String Post(String s ,String a) throws ExecutionException, InterruptedException {
 
-        String parameters ="";
+        //String parameters ="";
 
-        for(int i=0; i<a.length ;i++){
+        /*for(int i=0; i<a.length ;i++){
             try {
                 parameters += a[i]+"=" + URLEncoder.encode(a[i+1],"UTF-8")+"&";
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
             i++;
-        }
+        }*/
 
-
-        return new DownloadWebpageTask().execute(s,"POST",parameters).get();
+        return new DownloadWebpageTask().execute("http://10.0.2.2:9000/"+s,"POST", a).get();
 
     }
 
@@ -86,33 +90,51 @@ public class HTTPEnquire {
         private String downloadUrl(String myurl ,String method , String data) throws IOException {
             InputStream is = null;
             BufferedReader reader = null;
-            Log.e("url=", myurl);
+            //Log.e("url=", myurl);
+            //Log.e("data=", data);
+
+
+            /*JSONObject dataJson = new JSONObject();
+            try{
+                dataJson = new JSONObject(data);
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+            System.out.println(dataJson);*/
+
 
             try {
                 URL url = new URL(myurl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                /*conn.setReadTimeout(10000 );
-                conn.setConnectTimeout(15000 );
+                //conn.setReadTimeout(10000);
+                //conn.setConnectTimeout(15000);
                 conn.setRequestMethod(method);
                 conn.setDoInput(true);
-                conn.setRequestProperty("Accept-Encoding", "gzip");
-                conn.setRequestProperty("Connection", "close");
+                //conn.setRequestProperty("Accept-Encoding", "gzip");
+                //conn.setRequestProperty("Connection", "close");
                 if (method == "POST") {
                     conn.setDoOutput(true);
 
-                    conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                    conn.setRequestProperty("Content-Type", "application/json");
 
                     PrintWriter out = new PrintWriter(conn.getOutputStream());
                     out.print(data);
                     out.close();
-                }*/
+
+                }
+
                 // Starts the query
                 conn.connect();
                 int response = conn.getResponseCode();
-                is = conn.getInputStream();
 
-                String contentAsString = readIt(is, conn.getContentLength());
-                return contentAsString;
+                if (response == 200){
+                    is = conn.getInputStream();
+                    String contentAsString = readIt(is, conn.getContentLength());
+                    return contentAsString;
+                }
+
+                return null;
 
 
                 /*InputStream stream = conn.getInputStream();
