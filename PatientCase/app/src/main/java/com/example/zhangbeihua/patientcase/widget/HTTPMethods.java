@@ -42,8 +42,6 @@ public class HTTPMethods {
                 }
                 return buffer.toString();
 
-
-
             } catch (MalformedURLException e){
                 e.printStackTrace();
             } catch (IOException e){

@@ -17,24 +17,32 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.concurrent.ExecutionException;
+import java.io.BufferedReader;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 /**
  * Created by zhangbeihua on 12/05/16.
  */
-public class prmja_com {
+public class HTTPEnquire {
+    public String url = "http://10.0.2.2:9000/";
     public static String Get(String s ,String[] a) throws ExecutionException, InterruptedException {
 
-        String parameters = "";
-
-        for (int i = 0; i < a.length; i++) {
-            try {
-                parameters += a[i] + "=" + URLEncoder.encode(a[i + 1], "UTF-8") + "&";
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            i++;
+    String parameters = "";
+    if (a.length !=0){
+        parameters = "?";
+    }
+    for (int i = 0; i < a.length; i++) {
+        try {
+            parameters += a[i] + "=" + URLEncoder.encode(a[i + 1], "UTF-8") + "&";
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
-        return new DownloadWebpageTask().execute(s,"GET","").get();
+        i++;
+    }
+
+
+        return new DownloadWebpageTask().execute("http://10.0.2.2:9000/"+s+parameters,"GET","").get();
     }
 
     public static String Post(String s ,String[] a) throws ExecutionException, InterruptedException {
@@ -63,30 +71,28 @@ public class prmja_com {
         @Override
         protected String doInBackground(String... urls) {
 
-// params comes from the execute() call: params[0] is the url.
             try {
                 return downloadUrl(urls[0] ,urls[1],urls[2] );
             } catch (IOException e) {
+                System.out.println(e.getMessage());
                 return "Unable to retrieve web page. URL may be invalid.";
             }
         }
 
-        // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
         }
 
         private String downloadUrl(String myurl ,String method , String data) throws IOException {
             InputStream is = null;
-// Only display the first 500 characters of the retrieved
-// web page content.
-
+            BufferedReader reader = null;
+            Log.e("url=", myurl);
 
             try {
                 URL url = new URL(myurl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setReadTimeout(10000 /* milliseconds */);
-                conn.setConnectTimeout(15000 /* milliseconds */);
+                /*conn.setReadTimeout(10000 );
+                conn.setConnectTimeout(15000 );
                 conn.setRequestMethod(method);
                 conn.setDoInput(true);
                 conn.setRequestProperty("Accept-Encoding", "gzip");
@@ -99,27 +105,74 @@ public class prmja_com {
                     PrintWriter out = new PrintWriter(conn.getOutputStream());
                     out.print(data);
                     out.close();
-                }
+                }*/
                 // Starts the query
                 conn.connect();
                 int response = conn.getResponseCode();
-
                 is = conn.getInputStream();
-
-                // Convert the InputStream into a string
-
 
                 String contentAsString = readIt(is, conn.getContentLength());
                 return contentAsString;
 
 
-                // Makes sure that the InputStream is closed after the app is
-                // finished using it.
+                /*InputStream stream = conn.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+                StringBuffer buffer = new StringBuffer();
+                String line = "";
+                while ((line = reader.readLine())!=null){
+                    buffer.append(line);
+                }
+                return buffer.toString();*/
+
+
+
             } finally {
                 if (is != null) {
                     is.close();
                 }
             }
+
+
+            /*HttpURLConnection connection = null;
+            BufferedReader reader = null;
+
+            try{
+                URL url = new URL(myurl);
+                connection = (HttpURLConnection) url.openConnection();
+
+                connection.setReadTimeout(10000 );
+                connection.setConnectTimeout(15000 );
+                connection.setRequestMethod(method);
+                connection.setDoInput(true);
+                connection.setRequestProperty("Accept-Encoding", "gzip");
+                connection.setRequestProperty("Connection", "close");
+
+                connection.connect();
+                InputStream stream = connection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(stream));
+                StringBuffer buffer = new StringBuffer();
+                String line = "";
+                while ((line = reader.readLine())!=null){
+                    buffer.append(line);
+                }
+                return buffer.toString();
+
+            } finally {
+                if (connection != null){
+                    connection.disconnect();
+                }
+                try {
+                    if (reader != null){
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }*/
+            //return null;
+
+
+
         }
 
         private String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
@@ -141,16 +194,13 @@ public class prmja_com {
             InputStream iStream = null;
             try{
                 URL url = new URL(strUrl);
-                /** Creating an http connection to communcate with url */
+
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
-                /** Connecting to url */
                 urlConnection.connect();
 
-                /** Reading data from url */
                 iStream = urlConnection.getInputStream();
 
-                /** Creating a bitmap from the stream returned from the url */
                 bitmap = BitmapFactory.decodeStream(iStream);
 
             }catch(Exception e){

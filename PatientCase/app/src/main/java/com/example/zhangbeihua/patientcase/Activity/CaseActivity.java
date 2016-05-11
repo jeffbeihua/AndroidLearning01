@@ -6,26 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import com.example.zhangbeihua.patientcase.R;
 
-import android.os.AsyncTask;
-
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import com.example.zhangbeihua.patientcase.widget.HTTPMethods;
-import com.example.zhangbeihua.patientcase.widget.HTTPMethods.JSONTask;
-import com.example.zhangbeihua.patientcase.widget.prmja_com;
+import com.example.zhangbeihua.patientcase.widget.HTTPEnquire;
 import java.util.concurrent.ExecutionException;
+import org.json.*;
+
+
+
 
 public class CaseActivity extends AppCompatActivity {
 
@@ -41,19 +27,26 @@ public class CaseActivity extends AppCompatActivity {
 
         //HTTPMethods HTTP = new HTTPMethods();
 
-        new JSONTask().execute("http://jsonparsing.parseapp.com/jsonData/moviesDemoItem.txt");
+        //new JSONTask().execute("http://jsonparsing.parseapp.com/jsonData/moviesDemoItem.txt");
 
         //Log.d("json", task.getResult());
 
-
-
-
-
-
-
+        String res ="";
+        try {
+            String[] params = {"clinic","bodyparts"};
+            //String[] params = {};
+            //Http Post Method
+            //res = HTTPEnquire.Get("http://jsonparsing.parseapp.com/jsonData/moviesDemoItem.txt", params);
+            res = HTTPEnquire.Get("clinic/bodyparts", params);
+            etTag.setText(res);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public class JSONTask extends AsyncTask<String, String, String>{
+    /*public class JSONTask extends AsyncTask<String, String, String>{
         @Override
         protected String doInBackground(String... params) {
             HttpURLConnection connection = null;
@@ -99,5 +92,5 @@ public class CaseActivity extends AppCompatActivity {
             //return result;
             etTag.setText(result);
         }
-    }
+    }*/
 }
