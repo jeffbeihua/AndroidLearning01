@@ -1,4 +1,4 @@
-package com.example.zhangbeihua.ihealtherpatientcase.widget;
+package com.example.zhangbeihua.patientcase.widget;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

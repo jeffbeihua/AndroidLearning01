@@ -34,7 +34,7 @@ public class CaseActivity extends AppCompatActivity {
         String res ="";
         try {
             //JSONObject params = new JSONObject();
-            String params = "";
+            String[] params = {};
             //Http Post Method
             //res = HTTPEnquire.Get("http://jsonparsing.parseapp.com/jsonData/moviesDemoItem.txt", params);
             res = HTTPEnquire.Get("clinic/bodyparts", params);

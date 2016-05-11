@@ -31,20 +31,21 @@ import java.io.OutputStream;
  */
 public class HTTPEnquire {
     public String url = "http://10.0.2.2:9000/";
-    public static String Get(String s ,String a) throws ExecutionException, InterruptedException {
+    public static String Get(String s ,String[] a) throws ExecutionException, InterruptedException {
 
-    String parameters = "";
-    /*if (a.length !=0){
-        parameters = "?";
-    }
-    for (int i = 0; i < a.length; i++) {
-        try {
-            parameters += a[i] + "=" + URLEncoder.encode(a[i + 1], "UTF-8") + "&";
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        String parameters = "";
+        if (a.length !=0){
+            parameters = "?";
         }
-        i++;
-    }*/
+        for (int i = 0; i < a.length; i++) {
+            try {
+                parameters += a[i] + "=" + URLEncoder.encode(a[i + 1], "UTF-8") + "&";
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            i++;
+        }
+        Log.e("url=", "http://10.0.2.2:9000/"+s+parameters);
 
 
         return new DownloadWebpageTask().execute("http://10.0.2.2:9000/"+s+parameters,"GET","").get();
@@ -62,7 +63,7 @@ public class HTTPEnquire {
             }
             i++;
         }*/
-
+        Log.e("url=", "http://10.0.2.2:9000/"+s);
         return new DownloadWebpageTask().execute("http://10.0.2.2:9000/"+s,"POST", a).get();
 
     }
@@ -79,7 +80,7 @@ public class HTTPEnquire {
                 return downloadUrl(urls[0] ,urls[1],urls[2] );
             } catch (IOException e) {
                 System.out.println(e.getMessage());
-                return "Unable to retrieve web page. URL may be invalid.";
+                return "fail";
             }
         }
 
@@ -91,7 +92,7 @@ public class HTTPEnquire {
             InputStream is = null;
             BufferedReader reader = null;
             //Log.e("url=", myurl);
-            //Log.e("data=", data);
+            Log.e("data=", data);
 
 
             /*JSONObject dataJson = new JSONObject();
@@ -127,14 +128,16 @@ public class HTTPEnquire {
                 // Starts the query
                 conn.connect();
                 int response = conn.getResponseCode();
+                Log.e("http response1 =", String.valueOf(response));
 
                 if (response == 200){
                     is = conn.getInputStream();
                     String contentAsString = readIt(is, conn.getContentLength());
+                    Log.e("http response2 =", contentAsString);
                     return contentAsString;
                 }
 
-                return null;
+                return "fail";
 
 
                 /*InputStream stream = conn.getInputStream();

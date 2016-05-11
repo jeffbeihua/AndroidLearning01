@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.zhangbeihua.patientcase.R;
-//import com.example.zhangbeihua.patientcase.widget.AlertDialogHelper;
+import com.example.zhangbeihua.patientcase.widget.AlertDialogHelper;
 import com.example.zhangbeihua.patientcase.widget.HTTPEnquire;
 
 import java.util.concurrent.ExecutionException;
@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginpass=null;
     private EditText passported=null;
     private Button loginbtn;
-    private Button safecodebtn=null;
+    private Button btnRegister;
     private ImageView codeimg=null;
     private SharedPreferences prefs = null;
 
@@ -36,13 +36,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         initView();
         setLoginBtnListener();  //设置登录按钮监听
-
+        toRegistrationListerner();
     }
 
     private void initView() {
         loginuser= (EditText) findViewById(R.id.loginid_et);
         loginpass= (EditText) findViewById(R.id.loginpswd_et);
         loginbtn= (Button) findViewById(R.id.login_ok_btn);
+        btnRegister= (Button) findViewById(R.id.btnRegister);
     }
 
     private String user="";
@@ -60,11 +61,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveUserAndPass() {
-        //if(TextUtils.isEmpty(user)||TextUtils.isEmpty(pass)||TextUtils.isEmpty(passport)){
-            //AlertDialogHelper.showAlertDialog(LoginActivity.this, "提醒", "请填写完整的用户名,密码和验证码");
+        if(TextUtils.isEmpty(user)||TextUtils.isEmpty(pass)){
+            AlertDialogHelper.showAlertDialog(LoginActivity.this, "提醒", "请填写完整的用户名,密码和验证码");
 
-        //}
-        //else {
+        }
+        else {
 
             String res = "";
             try {
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Http Post Method
                 //res = HTTPEnquire.Get("http://jsonparsing.parseapp.com/jsonData/moviesDemoItem.txt", params);
                 res = HTTPEnquire.Post("user/login", params);
-                if (res != null) {
+                if (res != "fail" ) {
                     Intent intent = new Intent(LoginActivity.this, TapActivity.class);
                     startActivity(intent);
                 }
@@ -99,6 +100,25 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        //}
+        }
     }
+
+    private void toRegistrationListerner() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentR = new Intent(LoginActivity.this, RegistrationActivity.class);
+                startActivity(intentR);
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+
 }

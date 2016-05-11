@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="用户注册"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp" />
+    </RelativeLayout>
+
+    <!-- 信息输入框 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="20.0dip"
+        android:background="#fff0f0"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                style="@style/help_q_tv"
+                android:hint="请输入手机号"
+                android:text=""
+                android:id="@+id/etMobileNum"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                style="@style/help_q_tv"
+                android:hint="请输入密码"
+                android:text=""
+                android:id="@+id/etPassword"/>
+
+            <!--Button
+                android:id="@+id/registButtonCheckPassword"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/icon_cool_check" /-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                style="@style/help_q_tv"
+                android:hint="请输入邮箱"
+                android:text=""
+                android:id="@+id/etEmail"/>
+
+            <!--Button
+                android:id="@+id/registButtonCheckPassword"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/icon_cool_check" /-->
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                style="@style/help_q_tv"
+                android:hint="请输入验证码"
+                android:text=""
+                android:id="@+id/etCode"/>
+
+            <!--Button
+                android:id="@+id/registButtonCheckPassword"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/icon_cool_check" /-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <Button
+                style="@style/help_q_tv"
+                android:hint="点击获取手机验证码"
+                android:text=""
+                android:id="@+id/btnCode"/>
+
+            <!--Button
+                android:id="@+id/registButtonCheckPassword"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="10dip"
+                android:background="@drawable/icon_cool_check" /-->
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <!-- 提示文本 -->
+
+    <!--LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="10.0dip"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_tip"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_12" />
+    </LinearLayout-->
+
+    <ViewSwitcher
+        android:id="@+id/registViewSwitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- 注册按钮 -->
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30.0dip"
+            android:layout_marginRight="30.0dip"
+            android:layout_marginTop="20.0dip"
+            android:background="#ffff00"
+            android:text="注      册"
+            android:textColor="#ff0000"
+            android:textSize="20dp" />
+
+        <!--View
+            android:id="@+id/registViewLoading"
+            android:layout_width="120.0dip"
+            android:layout_height="120.0dip"
+            android:layout_gravity="center"
+            android:background="@anim/login_loading" /-->
+    </ViewSwitcher>
+
+</LinearLayout>

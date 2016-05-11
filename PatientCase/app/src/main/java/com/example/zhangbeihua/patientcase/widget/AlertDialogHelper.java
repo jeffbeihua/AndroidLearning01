@@ -1,4 +1,4 @@
-package com.example.zhangbeihua.ihealtherpatientcase.widget;
+package com.example.zhangbeihua.patientcase.widget;
 
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
