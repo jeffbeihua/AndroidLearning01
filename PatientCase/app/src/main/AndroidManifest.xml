@@ -21,6 +21,10 @@
         <activity android:name=".Activity.CaseActivity"></activity>
         <activity android:name=".Activity.ProfileActivity"></activity>
         <activity android:name=".Activity.RegistrationActivity"></activity>
+        <activity android:name=".Activity.CaseinfoActivity"></activity>
+        <activity android:name=".Activity.DiseasehistoryActivity"></activity>
+        <activity android:name=".Activity.DiseasehistorydetailActivity"></activity>
+        <activity android:name=".Activity.RecordActivity"></activity>
     </application>
 
 </manifest>

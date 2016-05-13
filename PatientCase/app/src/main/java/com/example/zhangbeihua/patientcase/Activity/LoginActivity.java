@@ -62,7 +62,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void saveUserAndPass() {
         if(TextUtils.isEmpty(user)||TextUtils.isEmpty(pass)){
-            AlertDialogHelper.showAlertDialog(LoginActivity.this, "提醒", "请填写完整的用户名,密码和验证码");
+            Intent intent = new Intent(LoginActivity.this, TapActivity.class);
+            startActivity(intent);
+            //AlertDialogHelper.showAlertDialog(LoginActivity.this, "提醒", "请填写完整的用户名,密码和验证码");
 
         }
         else {

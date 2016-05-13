@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 
@@ -21,6 +22,7 @@ import com.example.zhangbeihua.patientcase.R;
 public class HomeFragment extends Fragment {
 
     private Button btnCreatePatientCase;
+    private SearchView svSearchView;
 
 
 
@@ -38,9 +40,10 @@ public class HomeFragment extends Fragment {
         View V = inflater.inflate(R.layout.fragment_home, container, false);
 
         btnCreatePatientCase = (Button)V.findViewById(R.id.btnCreatePatientCase);
+        svSearchView = (SearchView)V.findViewById(R.id.svSearchView);
 
         setbtnCreatePatientCaseListener();
-
+        setsvSearchPatientCaseListener();
         return V;
     }
 
@@ -56,5 +59,18 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+    private void setsvSearchPatientCaseListener() {
+        svSearchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CaseActivity.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 
 }
